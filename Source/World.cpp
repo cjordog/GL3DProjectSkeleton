@@ -30,38 +30,6 @@ World::World()
 {
 
 }
-float s_cubeVertices[] =
-{
-	1.0f,	1.0f,	0.0f,
-	1.0f,	0.0f,	0.0f,
-	1.0f,	0.0f,	1.0f,
-	1.0f,	1.0f,	1.0f,
-
-	0.0f,	1.0f,	1.0f,
-	0.0f,	0.0f,	1.0f,
-	0.0f,	0.0f,	0.0f,
-	0.0f,	1.0f,	0.0f,
-
-	1.0f,	1.0f,	0.0f,
-	1.0f,	1.0f,	1.0f,
-	0.0f,	1.0f,	1.0f,
-	0.0f,	1.0f,	0.0f,
-
-	0.0f,	0.0f,	0.0f,
-	0.0f,	0.0f,	1.0f,
-	1.0f,	0.0f,	1.0f,
-	1.0f,	0.0f,	0.0f,
-
-	1.0f,	1.0f,	1.0f,
-	1.0f,  0.0f,	1.0f,
-	0.0f,	0.0f,	1.0f,
-	0.0f,	1.0f,	1.0f,
-
-	0.0f,	1.0f,	0.0f,
-	0.0f,	0.0f,	0.0f,
-	1.0f,	0.0f,	0.0f,
-	1.0f,	1.0f,	0.0f,
-};
 
 bool World::Init()
 {
@@ -80,7 +48,7 @@ bool World::Init()
 	glEnableVertexAttribArray(0);
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-	glBufferData(GL_ARRAY_BUFFER, 72 * sizeof(float), (float*)s_cubeVertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 72 * sizeof(float), (float*)Mesh::GetCubeVertices(), GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 36 * sizeof(uint8_t), Mesh::GetCubeIndices(), GL_STATIC_DRAW);
@@ -125,6 +93,7 @@ void World::Update(float updateTime, Input::InputData* inputData)
 {
 	ZoneScoped;
 	UpdateCamera(updateTime, inputData);
+	CalcFrameRate(updateTime);
 }
 
 constexpr float FRAMERATE_MS = 1000.0f;
