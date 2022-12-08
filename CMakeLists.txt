@@ -7,7 +7,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG -DIMGUI_ENABLED")
 set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_RELEASE} -DTRACY_ENABLE")
 
 # set the project name
-project(GLVoxel)
+project(GL3DSkeleton)
 
 file(GLOB GLVOXEL_SRC CONFIGURE_DEPENDS "Source/*.h" "Source/*.cpp")
 file(GLOB GLVOXEL_SHADERS CONFIGURE_DEPENDS "Source/Shaders/*.glsl")
@@ -41,7 +41,7 @@ target_link_directories(${PROJECT_NAME}
 # link libraries
 target_link_libraries(${PROJECT_NAME} PUBLIC glfw glm imgui glad Tracy::TracyClient )
 
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT GLVoxel)
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT GL3DSkeleton)
 
 	#PRIVATE Libraries/tracy/public/common
 	#PRIVATE Libraries/tracy/public/client
